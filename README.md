@@ -27,3 +27,12 @@ Executar:
 Back-end : php artisan serve
 
 Front-end: npm run watch
+
+--------------------------------------------------------------------------------------------------
+
+Folders importantes
+
+Back-End: /app/
+
+Front-End: /resources/js/Pages/
+
