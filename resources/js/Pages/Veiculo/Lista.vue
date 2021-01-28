@@ -55,10 +55,10 @@
         <b-link :href="route('veiculos.edit', row.item.id)"><b-button size="sm" class="mr-1">
           Editar
         </b-button></b-link>
-        <a :href="route('veiculos.delete', row.item.id)" id="delBtn"></a>
-        <b-button variant="danger" size="sm" class="mr-1" @click.prevent="confirmDelete">
+        <b-button variant="danger" size="sm" class="mr-1" @click.prevent="confirmDelete($event,row.item.id)">
           Excluir
         </b-button>
+        <a :href="route('veiculos.delete', row.item.id)" :id="'delBtn_' + row.item.id"></a>
       </template>
 
       <template #row-details="row">
@@ -111,10 +111,10 @@ export default {
     mounted() {},
     methods: {
       /* Prompt para confirmar o delete */
-      confirmDelete: function (event) {
+      confirmDelete: function (event,id) {
         event.preventDefault()
         if(confirm("Deseja realmente excluir este veículo?") == true) {
-          var elem = document.getElementById("delBtn")
+          var elem = document.getElementById("delBtn_" + id)
           elem.click()
         }
       }

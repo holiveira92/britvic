@@ -55,10 +55,10 @@
         <b-link :href="route('reservas.edit', row.item.id)"><b-button size="sm" class="mr-1">
           Editar
         </b-button></b-link>
-        <a :href="route('reservas.delete', row.item.id)" id="delBtn"></a>
-        <b-button variant="danger" size="sm" class="mr-1" @click.prevent="confirmDelete">
+        <b-button variant="danger" size="sm" class="mr-1" @click.prevent="confirmDelete($event,row.item.id)">
           Excluir
         </b-button>
+        <a :href="route('reservas.delete', row.item.id)" :id="'delBtn_' + row.item.id"></a>
       </template>
 
       <template #row-details="row">
@@ -114,10 +114,10 @@ export default {
     mounted() {},
     methods: {
       /* prompt para confirmar o delete */
-      confirmDelete: function (event) {
+      confirmDelete: function (event,id) {
         event.preventDefault()
         if(confirm("Deseja realmente excluir este agendamento?") == true) {
-          var elem = document.getElementById("delBtn")
+          var elem = document.getElementById("delBtn_" + id)
           elem.click()
         }
       }
